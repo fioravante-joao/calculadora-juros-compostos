@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora de Juros Compostos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: "Verdana", Sans-serif;
+            font-size: 14px;
+        }
+        .juros {
+            color: red;
+        }
+        .total-final {
+            color: green;
+        }
+        .total-investido {
+            color: blue;
+        }
+        .input-30 {
+            width: 70%;
+        }
+        .calculator-card {
+            background-color: #e5ebfa;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        .resultado-card {
+            background-color: #e5ebfa;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2544318247849960"
+    crossorigin="anonymous"></script>
+</head>
+<body>
+    <div>
+        <div class="calculator-card">
+            <p class="" style="font-size: 20px;"><b>Calculadora de Juros Compostos</b></p>
+            <span>Sua calculadora de juros compostos é uma ferramenta que permite realizar cálculos relacionados ao crescimento de um investimento ao longo do tempo, levando em consideração a taxa de juros composta.</span>
+        </div><br/>
+    </div>
+    <div class="container">        
+        <div class="row">
+            <div class="col-md-6">
+                <div class="calculator-card">
+                    <form id="formCalc" onsubmit="return calcularJurosCompostos()">
+                        <p class="" style="font-size: 20px;"><b>Simulador de Juros Compostos</b></p>
+                        <div class="form-group">
+                            <label for="investimento_inicial">Valor inicial:</label>
+                            <div class="input-group">
+                                <span class="input-group-text">R$</span>
+                                <input type="text" class="form-control input-30" id="investimento_inicial" placeholder="0,00">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="investimento_mensal">Valor mensal:</label>
+                            <div class="input-group">
+                                <span class="input-group-text">R$</span>
+                                <input type="text" class="form-control input-30" id="investimento_mensal" placeholder="0,00">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="taxa_de_juros">Taxa de juros (Mês):</label>
+                            <div class="input-group">
+                                <span class="input-group-text">%</span>
+                                <input type="text" class="form-control input-30" id="taxa_de_juros" placeholder="0,00">
+                            </div>
+                        </div>                    
+                        <div class="form-group">
+                            <label for="meses">Período em (Meses):</label>
+                            <input type="number" class="form-control" id="meses" placeholder="0">
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Calcular</button>
+                        <button type="button" class="btn btn-danger" onclick="limparCampos()">Limpar</button>
+                        <button type="button" class="btn btn-success" onclick="compartilharCalculo()">
+                            <i class="fab fa-whatsapp"></i> Compartilhar</button>
+                    </form>
+                    <br />
+                    <div id="resultado"></div>
+                </div>
+                
+            </div>
+        </div><br />
+
+        <div class="menu-topo">
+            <div><b>Veja Também: </b></div><br />
+            <a href="/index.html" class="menu-item">Página Inicial</a> -
+            <a href="/cronometro" class="menu-item">Cronômetro</a> - 
+            <a href="/calculadora-juros-compostos" class="menu-item">Calculadora-de-Juros-Compostos</a> - 
+            <a href="/meuip" class="menu-item">MeuIp</a>
+        </div><br />
+
+        <div class="row mt-3">
+            <div class="calculator-card">
+                <p class="" style="font-size: 20px;"><b>Saiba mais sobre o simulador de juros compostos</b></p>
+                <span>
+                    Com base nas informações fornecidas, a calculadora pode calcular o valor futuro de um investimento com base em um investimento inicial, uma taxa de juros e um período de tempo. Ela utiliza a fórmula de juros compostos, que leva em conta não apenas o valor inicial do investimento, mas também os juros acumulados ao longo dos períodos anteriores.
+                </span><br /><br />
+                <span>
+                    Ao usar a calculadora, você insere o valor inicial do investimento, a taxa de juros composta (expressa em forma decimal ou percentual) e o período de tempo desejado. A calculadora então realiza os cálculos necessários para determinar o valor futuro do investimento com base nessas informações.
+                </span><br /><br />
+                <span>Além disso, sua calculadora de juros compostos pode oferecer recursos adicionais, como a capacidade de calcular o valor presente de um investimento futuro desejado, determinar a taxa de juros necessária para atingir um determinado objetivo ou calcular o período de tempo necessário para alcançar um objetivo específico.</span>
+                <br /><br />
+                <span>Com essa calculadora, você pode tomar decisões informadas sobre investimentos, planejar seus objetivos financeiros e entender como o poder dos juros compostos pode afetar o crescimento do seu dinheiro ao longo do tempo.</span>
+            </div>
+        </div>
+            
+        <div class="row mt-5">
+            <div class="col text-center">
+                <p>&copy; 2023 melhorei.net - Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#investimento_inicial').mask('000.000.000.000.000,00', { reverse: true });
+            $('#investimento_mensal').mask('000.000.000.000.000,00', { reverse: true });
+            $('#taxa_de_juros').mask('000,00', { reverse: true });
+        });
+
+        function formatCurrency(value) {
+            return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value);
+        }
+
+        function calcularJurosCompostos() {
+            let investimentoInicial = parseFloat($('#investimento_inicial').val().replace('.', '').replace(',', '.'));
+            let investimentoMensal = parseFloat($('#investimento_mensal').val().replace('.', '').replace(',', '.'));
+            let meses = parseInt($('#meses').val());
+            let taxaDeJuros = parseFloat($('#taxa_de_juros').val().replace(',', '.'));
+
+            let investimentoAcumulado = investimentoInicial;
+            let totalInvestimentoAcumulado = investimentoInicial + (investimentoMensal * meses);
+    
+            let jurosCompostos = 0;
+            let jurosCompostosTotal = 0;
+
+            for (let i = 0; i < meses; i++) {
+                jurosCompostos = investimentoAcumulado * (taxaDeJuros / 100);
+                jurosCompostosTotal += jurosCompostos;
+                investimentoAcumulado += jurosCompostos + investimentoMensal;
+            }
+
+            let valorAReceber = totalInvestimentoAcumulado + jurosCompostosTotal;
+
+            let resultadoHTML = `
+                <div class="calculator-card" style="background-color:white;">
+                    <p><b>Resultados</b></hp>
+                    <p>Valor total final: <span class="total-final">${formatCurrency(valorAReceber)}</span></p>    
+                    <p>Valor total investido: <span class="total-investido">${formatCurrency(totalInvestimentoAcumulado)}</span></p>
+                    <p>Valor total em juros: <span class="juros">${formatCurrency(jurosCompostosTotal)}</span></p>
+                </div><br />
+            `;
+
+            $("#resultado").html(resultadoHTML);
+
+            return false;
+        }
+
+        function limparCampos() {
+            $('#investimento_inicial').val('');
+            $('#investimento_mensal').val('');
+            $('#meses').val('');
+            $('#taxa_de_juros').val('');
+            $('#resultado').html('');
+        }
+
+        function compartilharCalculo() {
+            let investimentoInicial = encodeURIComponent($('#investimento_inicial').val());
+            let investimentoMensal = encodeURIComponent($('#investimento_mensal').val());
+            let meses = encodeURIComponent($('#meses').val());
+            let taxaDeJuros = encodeURIComponent($('#taxa_de_juros').val());
+
+            let url = `https://melhorei.net/calculadora-juros-compostos?investimento_inicial=${investimentoInicial}&investimento_mensal=${investimentoMensal}&meses=${meses}&taxa_de_juros=${taxaDeJuros}`;
+
+            window.open(`https://wa.me/?text=${url}`, '_blank');
+        }
+    </script>
+</body>
+</html>
